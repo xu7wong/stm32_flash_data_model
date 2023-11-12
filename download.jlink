@@ -1,0 +1,9 @@
+SelectInterface SWD
+Speed 4000
+device STM32F103RC
+#erase
+loadbin build/test1.bin, 0x08000000
+loadbin data_model_generated.bin, 0x08020000
+r
+g
+q

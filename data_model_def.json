@@ -1,0 +1,39 @@
+{
+    "SUNSPEC":{
+        "addr":["uint32_t", 1],
+        "hash256":["uint8_t", 32],
+        "modified_date":["uint32_t", 1],
+        "version1":["uint32_t", 1],
+        "version2":["uint32_t", 2],
+        "is_avtive":["uint32_t", 1],
+        "lcd_control":{
+            "month":["uint32_t", 1],
+            "day":["uint32_t", 1]
+        },
+        "led_control":{
+            "year":["uint32_t", 1],
+            "month":["uint32_t", 2],
+            "day":["uint32_t", 1]
+        },
+        "crc32": ["uint32_t", 1]
+    },
+    "AGF":{
+        "addr":["uint32_t", 1],
+        "hash256":["uint8_t", 32],
+        "modified_date":["uint32_t", 1],
+        "version1":["uint32_t", 1],
+        "version2":["uint32_t", 2],
+        "is_avtive":["uint32_t", 1],
+        "lcd_control":{
+            "year":["uint32_t", 1],
+            "month":["uint32_t", 1],
+            "day":["uint32_t", 1]
+        },
+        "led_control":{
+            "year":["uint32_t", 1],
+            "month":["uint32_t", 2],
+            "day":["uint32_t", 1]
+        },
+        "crc32": ["uint32_t", 1]
+    }
+}
