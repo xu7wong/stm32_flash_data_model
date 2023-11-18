@@ -1,0 +1,79 @@
+cmake_minimum_required(VERSION 3.15)
+project(app C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(app/inc)
+include_directories(data_model)
+include_directories(lib/cmsis)
+include_directories(lib/stdperiph/inc)
+include_directories(lib/stm)
+include_directories(/Users/carl/Documents/stm32/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include)
+add_definitions( -DSTM32F103xE -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD)
+
+add_executable(stm32_flash_data_model
+        app/inc/date_time.h
+        app/inc/logging.h
+        app/inc/utils.h
+        app/src/date_time.c
+        app/src/logging.c
+        app/src/main.c
+        app/src/system_stm32f1xx.c
+        app/src/utils.c
+        data_model/data_model_generated.h
+        data_model/data_struct.c
+        data_model/data_struct.h
+        lib/cmsis/cmsis_compiler.h
+        lib/cmsis/cmsis_gcc.h
+        lib/cmsis/cmsis_version.h
+        lib/cmsis/core_cm3.h
+        lib/stdperiph/inc/misc.h
+        lib/stdperiph/inc/stm32f10x_adc.h
+        lib/stdperiph/inc/stm32f10x_bkp.h
+        lib/stdperiph/inc/stm32f10x_can.h
+        lib/stdperiph/inc/stm32f10x_cec.h
+        lib/stdperiph/inc/stm32f10x_crc.h
+        lib/stdperiph/inc/stm32f10x_dac.h
+        lib/stdperiph/inc/stm32f10x_dbgmcu.h
+        lib/stdperiph/inc/stm32f10x_dma.h
+        lib/stdperiph/inc/stm32f10x_exti.h
+        lib/stdperiph/inc/stm32f10x_flash.h
+        lib/stdperiph/inc/stm32f10x_fsmc.h
+        lib/stdperiph/inc/stm32f10x_gpio.h
+        lib/stdperiph/inc/stm32f10x_i2c.h
+        lib/stdperiph/inc/stm32f10x_iwdg.h
+        lib/stdperiph/inc/stm32f10x_pwr.h
+        lib/stdperiph/inc/stm32f10x_rcc.h
+        lib/stdperiph/inc/stm32f10x_rtc.h
+        lib/stdperiph/inc/stm32f10x_sdio.h
+        lib/stdperiph/inc/stm32f10x_spi.h
+        lib/stdperiph/inc/stm32f10x_tim.h
+        lib/stdperiph/inc/stm32f10x_usart.h
+        lib/stdperiph/inc/stm32f10x_wwdg.h
+        lib/stdperiph/src/misc.c
+        lib/stdperiph/src/stm32f10x_adc.c
+        lib/stdperiph/src/stm32f10x_bkp.c
+        lib/stdperiph/src/stm32f10x_can.c
+        lib/stdperiph/src/stm32f10x_cec.c
+        lib/stdperiph/src/stm32f10x_crc.c
+        lib/stdperiph/src/stm32f10x_dac.c
+        lib/stdperiph/src/stm32f10x_dbgmcu.c
+        lib/stdperiph/src/stm32f10x_dma.c
+        lib/stdperiph/src/stm32f10x_exti.c
+        lib/stdperiph/src/stm32f10x_flash.c
+        lib/stdperiph/src/stm32f10x_fsmc.c
+        lib/stdperiph/src/stm32f10x_gpio.c
+        lib/stdperiph/src/stm32f10x_i2c.c
+        lib/stdperiph/src/stm32f10x_iwdg.c
+        lib/stdperiph/src/stm32f10x_pwr.c
+        lib/stdperiph/src/stm32f10x_rcc.c
+        lib/stdperiph/src/stm32f10x_rtc.c
+        lib/stdperiph/src/stm32f10x_sdio.c
+        lib/stdperiph/src/stm32f10x_spi.c
+        lib/stdperiph/src/stm32f10x_tim.c
+        lib/stdperiph/src/stm32f10x_usart.c
+        lib/stdperiph/src/stm32f10x_wwdg.c
+        lib/stm/stm32f103xe.h
+        lib/stm/stm32f10x.h
+        lib/stm/stm32f1xx.h
+        lib/stm/system_stm32f1xx.h)

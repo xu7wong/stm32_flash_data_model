@@ -263,6 +263,7 @@ typedef enum
  #include "stm32f10x_bkp.h"
  #include "stm32f10x_spi.h"
  #include "stm32f10x_flash.h"
+ #include "stm32f10x_dma.h"
 #endif /* USE_HAL_DRIVER */
 
 /* Exported macro ------------------------------------------------------------*/

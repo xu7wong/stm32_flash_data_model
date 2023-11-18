@@ -89,9 +89,9 @@ uint32_t GetCRC32(const uint8_t *buf, int len) {
   return crc;
 }
 
-bool IsCRC32Valid(uint8_t *flash_address, uint32_t model_data_size) {
-  uint32_t *flash_data_crc = (uint32_t *)(flash_address + model_data_size - 4);
-  uint32_t calculated_crc = GetCRC32(flash_address, model_data_size - 4);
+bool IsCRC32Valid(uint8_t *buffer, uint32_t data_size) {
+  uint32_t *flash_data_crc = (uint32_t *)(buffer + data_size - 4);
+  uint32_t calculated_crc = GetCRC32(buffer, data_size - 4);
 
   //   Logging("debug %X, %X, %d\n", *flash_data_crc, calculated_crc,
   //           model_data_size);

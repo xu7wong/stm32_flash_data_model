@@ -4,22 +4,8 @@
 
 #include "stm32f1xx.h"
 
-void Init_RTC()
-{
-
-    NVIC_InitTypeDef NVIC_InitStructure;
-    /* Configure one bit for preemption priority */
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
-
-    /* Enable the RTC Interrupt */
-    NVIC_InitStructure.NVIC_IRQChannel = RTC_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
-    
-    if (BKP_ReadBackupRegister(BKP_DR1) != 0xA5A5)
-    {
+void Init_RTC() {
+    if (BKP_ReadBackupRegister(BKP_DR1) != 0xA5A5) {
         /* Backup data register value is not correct or not yet programmed (when
            the first time the program is executed) */
 
@@ -36,8 +22,7 @@ void Init_RTC()
         /* Enable LSE */
         RCC_LSEConfig(RCC_LSE_ON);
         /* Wait till LSE is ready */
-        while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)
-        {
+        while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET) {
         }
 
         /* Select LSE as RTC Clock Source */
@@ -70,17 +55,13 @@ void Init_RTC()
         // time_adjust();
 
         BKP_WriteBackupRegister(BKP_DR1, 0xA5A5);
-    }
-    else
-    {
+    } else {
         /* Check if the Power On Reset flag is set */
-        if (RCC_GetFlagStatus(RCC_FLAG_PORRST) != RESET)
-        {
+        if (RCC_GetFlagStatus(RCC_FLAG_PORRST) != RESET) {
             Logging("Power On Reset occurred....\n");
         }
-        /* Check if the Pin Reset flag is set */
-        else if (RCC_GetFlagStatus(RCC_FLAG_PINRST) != RESET)
-        {
+            /* Check if the Pin Reset flag is set */
+        else if (RCC_GetFlagStatus(RCC_FLAG_PINRST) != RESET) {
             Logging("External Reset occurred....\n");
         }
 
@@ -98,16 +79,16 @@ void Init_RTC()
     RCC_ClearFlag();
 }
 
-uint32_t Get_RTC(void){
+uint32_t Get_RTC(void) {
     return RTC_GetCounter();
 }
+
 /**
  * @brief  Displays the current time.
  * @param  TimeVar: RTC counter value.
  * @retval None
  */
-void Logging_DateTime_Now(void)
-{
+void Logging_DateTime_Now(void) {
     uint32_t TimeVar, TDD, THH, TMM, TSS;
     TimeVar = RTC_GetCounter();
 
@@ -136,8 +117,7 @@ void Logging_DateTime_Now(void)
  * @param  None
  * @retval None
  */
-void Adjust_RTC(uint32_t DD, uint32_t HH, uint32_t MM, uint32_t SS)
-{
+void Adjust_RTC(uint32_t DD, uint32_t HH, uint32_t MM, uint32_t SS) {
     /* Wait until last write operation on RTC registers has finished */
     RTC_WaitForLastTask();
     /* Change the current time */

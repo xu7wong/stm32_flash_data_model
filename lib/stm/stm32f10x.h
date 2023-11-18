@@ -99,6 +99,176 @@ typedef __I uint8_t vuc8;   /*!< Read Only */
 #define IS_FLASH_LATENCY(LATENCY) (((LATENCY) == FLASH_Latency_0) || \
                                    ((LATENCY) == FLASH_Latency_1) || \
                                    ((LATENCY) == FLASH_Latency_2))
+
+
+/*******************  Bit definition for DMA_CCR1 register  *******************/
+#define  DMA_CCR1_EN                         ((uint16_t)0x0001)            /*!< Channel enable*/
+#define  DMA_CCR1_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR1_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR1_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR1_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR1_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR1_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR1_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR1_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR1_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR1_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR1_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR1_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR1_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR1_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits(Channel Priority level) */
+#define  DMA_CCR1_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR1_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR1_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode */
+
+/*******************  Bit definition for DMA_CCR2 register  *******************/
+#define  DMA_CCR2_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR2_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR2_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR2_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR2_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR2_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR2_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR2_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR2_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR2_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR2_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR2_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR2_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR2_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR2_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR2_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR2_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR2_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode */
+
+/*******************  Bit definition for DMA_CCR3 register  *******************/
+#define  DMA_CCR3_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR3_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR3_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR3_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR3_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR3_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR3_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR3_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR3_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR3_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR3_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR3_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR3_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR3_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR3_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR3_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR3_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR3_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode */
+
+/*!<******************  Bit definition for DMA_CCR4 register  *******************/
+#define  DMA_CCR4_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR4_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR4_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR4_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR4_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR4_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR4_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR4_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR4_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR4_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR4_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR4_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR4_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR4_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR4_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR4_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR4_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR4_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode */
+
+/******************  Bit definition for DMA_CCR5 register  *******************/
+#define  DMA_CCR5_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR5_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR5_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR5_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR5_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR5_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR5_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR5_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR5_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR5_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR5_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR5_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR5_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR5_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR5_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR5_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR5_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR5_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode enable */
+
+/*******************  Bit definition for DMA_CCR6 register  *******************/
+#define  DMA_CCR6_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR6_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR6_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR6_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR6_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR6_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR6_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR6_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR6_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR6_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR6_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR6_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR6_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR6_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR6_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR6_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR6_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR6_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode */
+
+/*******************  Bit definition for DMA_CCR7 register  *******************/
+#define  DMA_CCR7_EN                         ((uint16_t)0x0001)            /*!< Channel enable */
+#define  DMA_CCR7_TCIE                       ((uint16_t)0x0002)            /*!< Transfer complete interrupt enable */
+#define  DMA_CCR7_HTIE                       ((uint16_t)0x0004)            /*!< Half Transfer interrupt enable */
+#define  DMA_CCR7_TEIE                       ((uint16_t)0x0008)            /*!< Transfer error interrupt enable */
+#define  DMA_CCR7_DIR                        ((uint16_t)0x0010)            /*!< Data transfer direction */
+#define  DMA_CCR7_CIRC                       ((uint16_t)0x0020)            /*!< Circular mode */
+#define  DMA_CCR7_PINC                       ((uint16_t)0x0040)            /*!< Peripheral increment mode */
+#define  DMA_CCR7_MINC                       ((uint16_t)0x0080)            /*!< Memory increment mode */
+
+#define  DMA_CCR7_PSIZE                      ((uint16_t)0x0300)            /*!< PSIZE[1:0] bits (Peripheral size) */
+#define  DMA_CCR7_PSIZE_0                    ((uint16_t)0x0100)            /*!< Bit 0 */
+#define  DMA_CCR7_PSIZE_1                    ((uint16_t)0x0200)            /*!< Bit 1 */
+
+#define  DMA_CCR7_MSIZE                      ((uint16_t)0x0C00)            /*!< MSIZE[1:0] bits (Memory size) */
+#define  DMA_CCR7_MSIZE_0                    ((uint16_t)0x0400)            /*!< Bit 0 */
+#define  DMA_CCR7_MSIZE_1                    ((uint16_t)0x0800)            /*!< Bit 1 */
+
+#define  DMA_CCR7_PL                         ((uint16_t)0x3000)            /*!< PL[1:0] bits (Channel Priority level) */
+#define  DMA_CCR7_PL_0                       ((uint16_t)0x1000)            /*!< Bit 0 */
+#define  DMA_CCR7_PL_1                       ((uint16_t)0x2000)            /*!< Bit 1 */
+
+#define  DMA_CCR7_MEM2MEM                    ((uint16_t)0x4000)            /*!< Memory to memory mode enable */
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

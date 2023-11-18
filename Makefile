@@ -41,6 +41,7 @@ app/src/main.c \
 app/src/logging.c \
 app/src/date_time.c \
 app/src/utils.c \
+app/src/comm.c \
 app/src/system_stm32f1xx.c \
 data_model/data_struct.c \
 lib/stdperiph/src/misc.c \
@@ -51,7 +52,8 @@ lib/stdperiph/src/stm32f10x_rtc.c \
 lib/stdperiph/src/stm32f10x_pwr.c \
 lib/stdperiph/src/stm32f10x_bkp.c \
 lib/stdperiph/src/stm32f10x_spi.c \
-lib/stdperiph/src/stm32f10x_flash.c
+lib/stdperiph/src/stm32f10x_flash.c \
+lib/stdperiph/src/stm32f10x_dma.c
 # Core/Src/stm32f1xx_it.c \
 # Core/Src/stm32f1xx_hal_msp.c \
 # Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
