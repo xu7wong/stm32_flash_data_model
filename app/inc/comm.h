@@ -12,7 +12,7 @@ extern "C"
 // uint32_t GetCRC32(const uint8_t *buf, int len);
 // bool IsCRC32Valid(uint8_t *flash_address, uint32_t model_data_size);
 
-int Task_Communication(uint8_t* buffer, uint16_t len);
+int Task_Communication(uint8_t* buffer, uint16_t buffer_len, uint8_t* data);
 
 #ifdef __cplusplus
 }

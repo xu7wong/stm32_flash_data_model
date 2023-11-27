@@ -9,7 +9,7 @@ void Init_RTC() {
         /* Backup data register value is not correct or not yet programmed (when
            the first time the program is executed) */
 
-        Logging("RTC not yet configured....\n");
+        Logging(LOG_DEBUG, "RTC not yet configured....\n");
         /* Enable PWR and BKP clocks */
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE);
 
@@ -49,7 +49,7 @@ void Init_RTC() {
         /* Wait until last write operation on RTC registers has finished */
         RTC_WaitForLastTask();
 
-        Logging("RTC configured....\n");
+        Logging(LOG_DEBUG, "RTC configured....\n");
 
         /* Adjust time by values entered by the user on the hyperterminal */
         // time_adjust();
@@ -58,14 +58,14 @@ void Init_RTC() {
     } else {
         /* Check if the Power On Reset flag is set */
         if (RCC_GetFlagStatus(RCC_FLAG_PORRST) != RESET) {
-            Logging("Power On Reset occurred....\n");
+            Logging(LOG_DEBUG, "Power On Reset occurred....\n");
         }
             /* Check if the Pin Reset flag is set */
         else if (RCC_GetFlagStatus(RCC_FLAG_PINRST) != RESET) {
-            Logging("External Reset occurred....\n");
+            Logging(LOG_DEBUG, "External Reset occurred....\n");
         }
 
-        Logging("No need to configure RTC....\n");
+        Logging(LOG_DEBUG, "No need to configure RTC....\n");
         // time_adjust();
         /* Wait for RTC registers synchronization */
         RTC_WaitForSynchro();
@@ -109,7 +109,7 @@ void Logging_DateTime_Now(void) {
     /* Compute seconds */
     TSS = (TimeVar % 3600) % 60;
 
-    Logging("Time: %02d-%02d:%0d:%02d\r", TDD, THH, TMM, TSS);
+    Logging(LOG_INFO, "Time: %02d-%02d:%0d:%02d\r", TDD, THH, TMM, TSS);
 }
 
 /**

@@ -19,6 +19,8 @@ int led = 0;
 
 #define RX_BUFFER_SIZE 128
 uint8_t RxBuffer[RX_BUFFER_SIZE];
+#define TX_BUFFER_SIZE 128
+uint8_t TxBuffer[TX_BUFFER_SIZE];
 // struct __data_model_SUNSPEC SUNSPEC;
 void Init_SysClock_72M(void);
 
@@ -31,22 +33,22 @@ int main(void)
     SystemCoreClockUpdate();
     Init_Interrupt();
     Init_Peripheral();
-    
-    Logging("System Clock updated: %d\n", SystemCoreClock);
+
+    Logging(LOG_DEBUG, "System Clock updated: %d\n", SystemCoreClock);
 
     uint32_t r_data = Init_Data_Model();
 
     //   Logging("dm SUNSPEC.struct_version = 0x%X, SUNSPEC data size = %d\n",
     //           SUNSPEC.struct_version, sizeof(SUNSPEC));
-    Logging("dm init = %d, addr = 0x%X, SUNSPEC.crc32 = 0x%X\n", r_data,
+    Logging(LOG_DEBUG, "dm init = %d, addr = 0x%X, SUNSPEC.crc32 = 0x%X\n", r_data,
             SUNSPEC.addr, SUNSPEC.crc32);
     // uint32_t *a = (uint32_t*)0x08020000;
     //(*((volatile uint32_t *)(0x08020000)))
-    Logging("dm bank1 modified_date = %d, SUNSPEC size = %d\n",
+    Logging(LOG_DEBUG, "dm bank1 modified_date = %d, SUNSPEC size = %d\n",
             SUNSPEC.modified_date, sizeof(SUNSPEC));
-    Logging("dm SUNSPEC.version2 = %d,%d\n", SUNSPEC.version2[0],
+    Logging(LOG_DEBUG, "dm SUNSPEC.version2 = %d,%d\n", SUNSPEC.version2[0],
             SUNSPEC.version2[1]);
-    Logging("dm SUNSPEC.lcd_control.day = %d, led_control.month = %d,%d\n",
+    Logging(LOG_DEBUG, "dm SUNSPEC.lcd_control.day = %d, led_control.month = %d,%d\n",
             SUNSPEC.lcd_control.day, SUNSPEC.led_control.month[0],
             SUNSPEC.led_control.month[1]);
 
@@ -66,15 +68,17 @@ int main(void)
                 led = 1;
                 // GPIO_SetBits(GPIOD, GPIO_Pin_2);
             }
-            
+
             Logging_DateTime_Now();
-            //Logging("rx=%X,%X,%d.\n",RxBuffer[0], RxBuffer[1], DMA1_Channel5->CNDTR);
+            // Logging("rx=%X,%X,%d.\n",RxBuffer[0], RxBuffer[1], DMA1_Channel5->CNDTR);
         }
-        if(RX_Buffer_Is_Ready){
+        if (RX_Buffer_Is_Ready)
+        {
             RX_Buffer_Is_Ready = false;
-            
-            int r = Task_Communication(RxBuffer, RX_Buffer_Data_Length);
-            Logging("rx len=%d, r=%d\n", RX_Buffer_Data_Length, r);
+            // uint16_t tx_buffer_length = 0;
+            int r = Task_Communication(RxBuffer, RX_Buffer_Data_Length, TxBuffer);
+            Print_Buffer(TxBuffer, TxBuffer[2]+(TxBuffer[3]<<8));
+            Logging(LOG_DEBUG, "rx len=%d, r=%d\n", RX_Buffer_Data_Length, r);
             DMA_Cmd(DMA1_Channel5, ENABLE);
         }
 
@@ -209,7 +213,7 @@ void Init_Peripheral(void)
     DMA_InitTypeDef DMA_InitStructure;
 
     DMA_DeInit(DMA1_Channel5);
-    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&(USART1->DR); // Data Register Uint32_t
+    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t) & (USART1->DR); // Data Register Uint32_t
     DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)RxBuffer;
     DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
     DMA_InitStructure.DMA_BufferSize = RX_BUFFER_SIZE;
@@ -284,20 +288,21 @@ void USART1_IRQHandler(void)
     if (USART_GetITStatus(USART1, USART_IT_IDLE) != RESET)
     {
         GPIO_ResetBits(GPIOD, GPIO_Pin_2);
-        DMA_Cmd(DMA1_Channel5,DISABLE);
+        DMA_Cmd(DMA1_Channel5, DISABLE);
         uint32_t temp = DMA1_Channel5->CNDTR;
-        if (temp < RX_BUFFER_SIZE){
+        if (temp < RX_BUFFER_SIZE)
+        {
             RX_Buffer_Data_Length = (uint16_t)(RX_BUFFER_SIZE - temp);
             // if(RX_Buffer_Data_Length>RX_BUFFER_SIZE){
-                // RX_Buffer_Data_Length = RX_BUFFER_SIZE;
+            // RX_Buffer_Data_Length = RX_BUFFER_SIZE;
             // }
         }
         DMA1_Channel5->CNDTR = RX_BUFFER_SIZE;
         RX_Buffer_Is_Ready = true;
-        
+
         // DMA_SetCurrDataCounter(DMA1_Channel5,30);
-        //DMA_Cmd(DMA1_Channel5,ENABLE);
-        
+        // DMA_Cmd(DMA1_Channel5,ENABLE);
+
         USART_ReceiveData(USART1); // only to clear USART_IT_IDLE
     }
 

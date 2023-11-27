@@ -5,10 +5,20 @@
 extern "C"
 {
 #endif
-
+#define LOOGING_LEVEL LOG_DEBUG
 #include <stdint.h>
 #include <stdbool.h>
-int Logging(const char *format, ...);
+
+typedef enum
+{
+    LOG_INFO,
+    LOG_DEBUG,
+    LOG_WARNING,
+    LOG_ERROR
+} logging_level_t;
+
+int Logging(logging_level_t level, const char *format, ...);
+void Print_Buffer(uint8_t *buffer, uint16_t length);
 // #include <stdlib.h>
 // #include <stdarg.h>
 // #include <unistd.h>

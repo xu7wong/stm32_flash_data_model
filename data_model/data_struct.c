@@ -6,11 +6,28 @@
 struct __data_model_SUNSPEC SUNSPEC;
 struct __data_model_AGF AGF;
 
-#define DATA_MODEL_BANK0_ADDRESS 0x08020000
+
 // #define DATA_MODEL_HASH_SIZE 32
 const uint8_t __hash256_data_model_SUNSPEC[] = __HASH_SUNSPEC;
 const uint8_t __hash256_data_model_AGF[] = __HASH_AGF;
 
+uint32_t Get_Data_Model_Address_By_Index(uint16_t index){
+  uint32_t addr;
+  switch (index){
+    case 1:
+      addr = SUNSPEC.addr;
+      break;
+
+    case 2:
+      addr = AGF.addr;
+      break;
+    
+    default:
+      addr = 0;
+      // default statements
+  }
+  return addr;
+}
 uint32_t Init_Data_Model(void) {
   uint32_t result = 0;
 
